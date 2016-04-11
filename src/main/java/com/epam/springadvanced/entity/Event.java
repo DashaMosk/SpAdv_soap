@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+@XmlType(namespace = "http://www.epam.com/event")
 @XmlRootElement(name="Event")
 public class Event {
     private Long id;

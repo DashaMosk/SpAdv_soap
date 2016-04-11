@@ -1,12 +1,11 @@
 package com.epam.springadvanced.entity;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@XmlRootElement(name="User")
+// @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "User", namespace = "http://www.epam.com/user")
 public class User {
     private Long id;
     private String name;
@@ -81,7 +80,7 @@ public class User {
         this.password = password;
     }
 
-    @XmlTransient
+
     public List<Role> getRoles() {
         return roles;
     }

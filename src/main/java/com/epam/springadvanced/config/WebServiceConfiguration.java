@@ -36,6 +36,6 @@ import org.springframework.xml.xsd.XsdSchema;
 
         @Bean
         public XsdSchema spadvanceSchema() {
-            return new SimpleXsdSchema(new ClassPathResource("schema1.xsd"));
+            return new SimpleXsdSchema(new ClassPathResource("\\schemas\\user.xsd"));
         }
     }
