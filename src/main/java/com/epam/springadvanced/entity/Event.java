@@ -1,15 +1,13 @@
 package com.epam.springadvanced.entity;
 
-import java.time.LocalDateTime;
-
 import com.epam.springadvanced.service.Rating;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.time.LocalDateTime;
 
-@XmlType(namespace = "http://www.epam.com/event")
-@XmlRootElement(name="Event")
+@XmlType(namespace = "http://www.epam.com/spadvance")
 public class Event {
     private Long id;
     private String name;

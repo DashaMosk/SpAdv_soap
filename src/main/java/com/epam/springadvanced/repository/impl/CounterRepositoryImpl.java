@@ -1,11 +1,10 @@
 package com.epam.springadvanced.repository.impl;
 
+import com.epam.springadvanced.repository.CounterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.epam.springadvanced.repository.CounterRepository;
 
 @Repository
 public class CounterRepositoryImpl implements CounterRepository {

@@ -1,19 +1,12 @@
 package com.epam.springadvanced.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+@XmlRootElement(namespace = "http://www.epam.com/spadvance")
 @XmlType(namespace = "http://www.epam.com/spadvance")
-public class Role {
-    private int id;
+public class GetEventRequest {
     private String name;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

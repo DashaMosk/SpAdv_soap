@@ -5,7 +5,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.PathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
@@ -36,6 +35,6 @@ import org.springframework.xml.xsd.XsdSchema;
 
         @Bean
         public XsdSchema spadvanceSchema() {
-            return new SimpleXsdSchema(new ClassPathResource("\\schemas\\user.xsd"));
+            return new SimpleXsdSchema(new ClassPathResource("\\schemas\\spadvance.xsd"));
         }
     }

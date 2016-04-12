@@ -1,9 +1,10 @@
 package com.epam.springadvanced.service;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="Rating")
+@XmlEnum
+@XmlType(namespace = "http://www.epam.com/spadvance")
 public enum Rating {
     HIGH(0), MID(1), LOW(2);
 

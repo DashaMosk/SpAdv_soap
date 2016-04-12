@@ -1,16 +1,15 @@
 package com.epam.springadvanced.repository.impl;
 
+import com.epam.springadvanced.entity.Auditorium;
+import com.epam.springadvanced.entity.Seat;
+import com.epam.springadvanced.repository.AuditoriumRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import com.epam.springadvanced.entity.Auditorium;
-import com.epam.springadvanced.entity.Seat;
-import com.epam.springadvanced.repository.AuditoriumRepository;
 
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;

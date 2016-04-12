@@ -1,7 +1,8 @@
 package com.epam.springadvanced.endpoints;
 
+import com.epam.springadvanced.entity.GetEventRequest;
+import com.epam.springadvanced.entity.GetEventResponse;
 import com.epam.springadvanced.service.EventService;
-import org.jdom2.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -19,14 +20,12 @@ public class EventEndpoint {
         this.eventService = eventService;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "SpadvanceRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getEventRequest")
     @ResponsePayload
-    public void getAllEvents(@RequestPayload Element request) {
-        eventService.getAll();
-//       GetAllEventsResponse response = new GetAllEventsResponse();
-//       // response.setEvents(eventService.getAll());
-//
-//        // return response;
+    public GetEventResponse getEventByName(@RequestPayload GetEventRequest request) {
+        GetEventResponse response = new GetEventResponse();
+        response.setEvent(eventService.getByName(request.getName()));
+        return response;
    }
 
 }

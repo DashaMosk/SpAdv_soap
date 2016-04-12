@@ -1,19 +1,18 @@
 package com.epam.springadvanced.service.impl;
 
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.epam.springadvanced.entity.Ticket;
 import com.epam.springadvanced.entity.User;
 import com.epam.springadvanced.repository.TicketRepository;
 import com.epam.springadvanced.repository.UserRepository;
 import com.epam.springadvanced.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
