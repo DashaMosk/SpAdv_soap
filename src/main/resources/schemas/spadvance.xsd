@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:epam="http://www.epam.com/spadvance" targetNamespace="http://www.epam.com/spadvance" version="1.0">
+
+  <xs:element name="getEventRequest" type="epam:getEventRequest"/>
+
+  <xs:element name="getEventResponse" type="epam:getEventResponse"/>
+
+  <xs:complexType name="event">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="rating" type="epam:rating"/>
+      <xs:element name="ticketPrice" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEventRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEventResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="event" type="epam:event"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="roles" nillable="true" type="epam:role"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="rating">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HIGH"/>
+      <xs:enumeration value="MID"/>
+      <xs:enumeration value="LOW"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
