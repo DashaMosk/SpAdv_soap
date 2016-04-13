@@ -1,11 +1,9 @@
 package com.epam.springadvanced.entity;
 
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDate;
 import java.util.List;
 
-// @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "User", namespace = "http://www.epam.com/spadvance")
 public class User {
     private Long id;
@@ -64,7 +62,6 @@ public class User {
         this.email = email;
     }
 
-    @XmlTransient
     public LocalDate getBirthday() {
         return birthday;
     }

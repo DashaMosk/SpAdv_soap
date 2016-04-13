@@ -133,11 +133,6 @@
                 <configuration>
                     <transformSchemas>
                         <transformSchema>
-                            <uri>http://www.epam.com/event</uri>
-                            <toPrefix>epam</toPrefix>
-                            <toFile>event.xsd</toFile>
-                        </transformSchema>
-                        <transformSchema>
                             <uri>http://www.epam.com/spadvance</uri>
                             <toPrefix>epam</toPrefix>
                             <toFile>spadvance.xsd</toFile>
@@ -146,8 +141,7 @@
                    <sources>
                         <source>src/main/java/com/epam/springadvanced/entity/User.java</source>
                         <source>src/main/java/com/epam/springadvanced/entity/Event.java</source>
-                        <source>src/main/java/com/epam/springadvanced/entity/GetEventResponse.java</source>
-                        <source>src/main/java/com/epam/springadvanced/entity/GetEventRequest.java</source>
+                        <source>src/main/java/com/epam/springadvanced/message</source>
                    </sources>
                  <outputDirectory>${project.basedir}/src/main/resources/schemas/</outputDirectory>
                 </configuration>

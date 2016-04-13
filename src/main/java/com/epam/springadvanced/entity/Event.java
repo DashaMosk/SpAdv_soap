@@ -2,8 +2,6 @@ package com.epam.springadvanced.entity;
 
 import com.epam.springadvanced.service.Rating;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDateTime;
 
@@ -51,7 +49,6 @@ public class Event {
         this.name = name;
     }
 
-    @XmlTransient
     public LocalDateTime getDateTime() {
         return dateTime;
     }
@@ -76,7 +73,6 @@ public class Event {
         this.rating = rating;
     }
 
-    @XmlTransient
     public Auditorium getAuditorium() {
         return auditorium;
     }

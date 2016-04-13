@@ -1,5 +1,6 @@
-package com.epam.springadvanced.entity;
+package com.epam.springadvanced.message;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -8,6 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetEventRequest {
     private String name;
 
+    @XmlElement(required=true)
     public String getName() {
         return name;
     }

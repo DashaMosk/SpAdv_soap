@@ -1,5 +1,6 @@
 package com.epam.springadvanced.entity;
 
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Stream;
@@ -7,11 +8,14 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.rangeClosed;
 
+@XmlType(namespace = "http://www.epam.com/spadvance")
 public class Auditorium {
     private int id;
     private String name;
     private int numberOfSeats;
     private Collection<Seat> seats;
+
+    public Auditorium() {}
 
     public Auditorium(int id) {
         this.id = id;

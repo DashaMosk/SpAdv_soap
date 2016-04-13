@@ -1,4 +1,6 @@
-package com.epam.springadvanced.entity;
+package com.epam.springadvanced.message;
+
+import com.epam.springadvanced.entity.Event;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
