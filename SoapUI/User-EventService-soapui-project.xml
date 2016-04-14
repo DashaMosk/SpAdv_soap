@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="10685fb6-3388-4446-a56a-a8a502e68109" activeEnvironment="Default" name="User&amp;EventService" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="6efcf539-c596-44b4-8686-9925c77c4057" wsaVersion="NONE" name="SpAdvPortSoap11" type="wsdl" bindingName="{http://epam.com/spadvance-web-service}SpAdvPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/spadvance.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/spadvance.wsdl"><con:part><con:url>http://localhost:8080/ws/spadvance.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://epam.com/spadvance-web-service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://www.epam.com/event" xmlns:sch1="http://www.epam.com/user" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://epam.com/spadvance-web-service">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.epam.com/event" xmlns:epam="http://www.epam.com/event" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="assignAuditoriumRequest" type="epam:assignAuditoriumRequest"/>
+      <xs:element name="createEventRequest" type="epam:createEventRequest"/>
+      <xs:element name="eventResponse" type="epam:eventResponse"/>
+      <xs:element name="eventsResponse" type="epam:eventsResponse"/>
+      <xs:element name="getAllEventsRequest" type="epam:getAllEventsRequest"/>
+      <xs:element name="getBookedTicketsByUserRequest" type="epam:getBookedTicketsByUserRequest"/>
+      <xs:element name="getBookedTicketsRequest" type="epam:getBookedTicketsRequest"/>
+      <xs:element name="getEventRequest" type="epam:getEventRequest"/>
+      <xs:element name="getNextEventRequest" type="epam:getNextEventRequest"/>
+      <xs:element name="removeEventRequest" type="epam:removeEventRequest"/>
+      <xs:element name="ticketsResponse" type="epam:ticketsResponse"/>
+      <xs:complexType name="event">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="auditorium" type="epam:auditorium"/>
+          <xs:element minOccurs="0" name="dateTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="rating" type="epam:rating"/>
+          <xs:element name="ticketPrice" type="xs:float"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="auditorium">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="seats" nillable="true" type="epam:seat"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="seat">
+        <xs:sequence>
+          <xs:element name="number" type="xs:int"/>
+          <xs:element name="vip" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="assignAuditoriumRequest">
+        <xs:sequence>
+          <xs:element name="auditId" type="xs:int"/>
+          <xs:element name="date" type="xs:string"/>
+          <xs:element name="eventId" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createEventRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateTime" nillable="true" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="price" type="xs:float"/>
+          <xs:element name="rating" type="epam:rating"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAllEventsRequest">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getBookedTicketsByUserRequest">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getBookedTicketsRequest">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getEventRequest">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNextEventRequest">
+        <xs:sequence>
+          <xs:element name="date" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="removeEventRequest">
+        <xs:sequence>
+          <xs:element name="idEvent" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="eventResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="event" type="epam:event"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="eventsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="events" nillable="true" type="epam:event"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ticketsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="tickets" nillable="true" type="epam:ticket"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ticket">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="event" type="epam:event"/>
+          <xs:element name="price" type="xs:float"/>
+          <xs:element minOccurs="0" name="seat" type="epam:seat"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="rating">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="HIGH"/>
+          <xs:enumeration value="LOW"/>
+          <xs:enumeration value="MID"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.epam.com/user" xmlns:epam="http://www.epam.com/user" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="createUserRequest" type="epam:createUserRequest"/>
+      <xs:element name="getUserByEmailRequest" type="epam:getUserByEmailRequest"/>
+      <xs:element name="getUserByNameRequest" type="epam:getUserByNameRequest"/>
+      <xs:element name="removeUserRequest" type="epam:removeUserRequest"/>
+      <xs:element name="userResponse" type="epam:userResponse"/>
+      <xs:complexType name="user">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthday" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="roles" nillable="true" type="epam:role"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="role">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createUserRequest">
+        <xs:sequence>
+          <xs:element name="birthday" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUserByEmailRequest">
+        <xs:sequence>
+          <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUserByNameRequest">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="removeUserRequest">
+        <xs:sequence>
+          <xs:element name="idUser" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="user" type="epam:user"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getNextEventRequest">
+    <wsdl:part element="sch0:getNextEventRequest" name="getNextEventRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookedTicketsByUserRequest">
+    <wsdl:part element="sch0:getBookedTicketsByUserRequest" name="getBookedTicketsByUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createEventRequest">
+    <wsdl:part element="sch0:createEventRequest" name="createEventRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookedTicketsRequest">
+    <wsdl:part element="sch0:getBookedTicketsRequest" name="getBookedTicketsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeUserRequest">
+    <wsdl:part element="sch1:removeUserRequest" name="removeUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userResponse">
+    <wsdl:part element="sch1:userResponse" name="userResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserByNameRequest">
+    <wsdl:part element="sch1:getUserByNameRequest" name="getUserByNameRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEventRequest">
+    <wsdl:part element="sch0:removeEventRequest" name="removeEventRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEventsRequest">
+    <wsdl:part element="sch0:getAllEventsRequest" name="getAllEventsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createUserRequest">
+    <wsdl:part element="sch1:createUserRequest" name="createUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eventsResponse">
+    <wsdl:part element="sch0:eventsResponse" name="eventsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEventRequest">
+    <wsdl:part element="sch0:getEventRequest" name="getEventRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="assignAuditoriumRequest">
+    <wsdl:part element="sch0:assignAuditoriumRequest" name="assignAuditoriumRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ticketsResponse">
+    <wsdl:part element="sch0:ticketsResponse" name="ticketsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserByEmailRequest">
+    <wsdl:part element="sch1:getUserByEmailRequest" name="getUserByEmailRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eventResponse">
+    <wsdl:part element="sch0:eventResponse" name="eventResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SpAdvPort">
+    <wsdl:operation name="getNextEvent">
+      <wsdl:input message="tns:getNextEventRequest" name="getNextEventRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getBookedTicketsByUser">
+      <wsdl:input message="tns:getBookedTicketsByUserRequest" name="getBookedTicketsByUserRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createEvent">
+      <wsdl:input message="tns:createEventRequest" name="createEventRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getBookedTickets">
+      <wsdl:input message="tns:getBookedTicketsRequest" name="getBookedTicketsRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <wsdl:input message="tns:removeUserRequest" name="removeUserRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="user">
+      <wsdl:output message="tns:userResponse" name="userResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByName">
+      <wsdl:input message="tns:getUserByNameRequest" name="getUserByNameRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="removeEvent">
+      <wsdl:input message="tns:removeEventRequest" name="removeEventRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEvents">
+      <wsdl:input message="tns:getAllEventsRequest" name="getAllEventsRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createUser">
+      <wsdl:input message="tns:createUserRequest" name="createUserRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="events">
+      <wsdl:output message="tns:eventsResponse" name="eventsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEvent">
+      <wsdl:input message="tns:getEventRequest" name="getEventRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="assignAuditorium">
+      <wsdl:input message="tns:assignAuditoriumRequest" name="assignAuditoriumRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="tickets">
+      <wsdl:output message="tns:ticketsResponse" name="ticketsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByEmail">
+      <wsdl:input message="tns:getUserByEmailRequest" name="getUserByEmailRequest"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="event">
+      <wsdl:output message="tns:eventResponse" name="eventResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SpAdvPortSoap11" type="tns:SpAdvPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getNextEvent">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getNextEventRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getBookedTicketsByUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getBookedTicketsByUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createEvent">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createEventRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getBookedTickets">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getBookedTicketsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="removeUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="user">
+      <soap:operation soapAction=""/>
+      <wsdl:output name="userResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByName">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getUserByNameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="removeEvent">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="removeEventRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEvents">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllEventsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="events">
+      <soap:operation soapAction=""/>
+      <wsdl:output name="eventsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEvent">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEventRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="assignAuditorium">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="assignAuditoriumRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="tickets">
+      <soap:operation soapAction=""/>
+      <wsdl:output name="ticketsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByEmail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getUserByEmailRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="event">
+      <soap:operation soapAction=""/>
+      <wsdl:output name="eventResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SpAdvPortService">
+    <wsdl:port binding="tns:SpAdvPortSoap11" name="SpAdvPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="a651009b-92ee-4bca-86bd-5fa5d9c1b51a" isOneWay="false" action="" name="assignAuditorium" bindingOperationName="assignAuditorium" type="One-Way" inputName="assignAuditoriumRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dbaa3ab1-5ab2-4cd1-a600-764cc72834c3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:assignAuditoriumRequest>\r
+         <auditId>2</auditId>\r
+         <date>2016-04-11T18:00</date>\r
+         <eventId>1</eventId>\r
+      </even:assignAuditoriumRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/assignAuditoriumRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="00b1fec9-6d7c-4421-bb8f-7d032274be23" isOneWay="false" action="" name="createEvent" bindingOperationName="createEvent" type="One-Way" inputName="createEventRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a2c1dd5e-221c-4d30-9a4d-70f78286e2cf" name="with time"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <even:createEventRequest>
+         <!--Optional:-->
+         <dateTime>2016-04-20T18:00</dateTime>
+         <name>Rock concert</name>
+         <price>200.0</price>
+         <rating>HIGH</rating>
+      </even:createEventRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/createEventRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="7a0383bc-a9fe-44cc-8ba3-f60b88522d04" name="without time"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:createEventRequest>\r
+         <!--Optional:-->\r
+         <dateTime>?</dateTime>\r
+         <name>Rock concert</name>
+         <price>200.0</price>
+         <rating>HIGH</rating>
+      </even:createEventRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/createEventRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f545b4ee-7dde-4e01-88e3-09296892a79c" isOneWay="false" action="" name="createUser" bindingOperationName="createUser" type="One-Way" inputName="createUserRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a477c111-99a1-4989-b198-1d2c536e9abd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://www.epam.com/user">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:createUserRequest>\r
+         <birthday>1992-04-20</birthday>\r
+         <email>lidia@gmail.com</email>\r
+         <name>Lidia</name>\r
+      </user:createUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/createUserRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="eb34f912-00d2-4877-aa00-72151c925b42" isOneWay="false" action="" name="event" bindingOperationName="event" type="Notification" outputName="eventResponse" inputName="" receivesAttachments="false" anonymous="optional"><con:settings/><con:call id="7808baa1-72c3-408a-8ce3-7081cfac59d0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:eventResponse>\r
+         <!--Optional:-->\r
+         <event>\r
+            <!--Optional:-->\r
+            <auditorium>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+               <!--Zero or more repetitions:-->\r
+               <seats>\r
+                  <number>?</number>\r
+                  <vip>?</vip>\r
+               </seats>\r
+            </auditorium>\r
+            <!--Optional:-->\r
+            <dateTime>?</dateTime>\r
+            <!--Optional:-->\r
+            <name>?</name>\r
+            <!--Optional:-->\r
+            <rating>?</rating>\r
+            <ticketPrice>?</ticketPrice>\r
+         </event>\r
+      </even:eventResponse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f335a4a3-f5ff-41b0-8f47-2af5e783f4e9" isOneWay="false" action="" name="events" bindingOperationName="events" type="Notification" outputName="eventsResponse" inputName="" receivesAttachments="false" anonymous="optional"><con:settings/><con:call id="5360c3d5-f9f0-4349-9822-517bf0ed8397" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:eventsResponse>\r
+         <!--Zero or more repetitions:-->\r
+         <events>\r
+            <!--Optional:-->\r
+            <auditorium>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+               <!--Zero or more repetitions:-->\r
+               <seats>\r
+                  <number>?</number>\r
+                  <vip>?</vip>\r
+               </seats>\r
+            </auditorium>\r
+            <!--Optional:-->\r
+            <dateTime>?</dateTime>\r
+            <!--Optional:-->\r
+            <name>?</name>\r
+            <!--Optional:-->\r
+            <rating>?</rating>\r
+            <ticketPrice>?</ticketPrice>\r
+         </events>\r
+      </even:eventsResponse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c17d5055-40bd-4721-98d5-f05930fc1ba9" isOneWay="false" action="" name="getAllEvents" bindingOperationName="getAllEvents" type="One-Way" inputName="getAllEventsRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c8357ef3-12ac-4c4c-8bfa-2b96931d747e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:getAllEventsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getAllEventsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="95730a4c-729b-4dfc-a0da-30d50b748e18" isOneWay="false" action="" name="getBookedTickets" bindingOperationName="getBookedTickets" type="One-Way" inputName="getBookedTicketsRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c4677401-cfb3-47b6-90e1-fb2d0ca34a5b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:getBookedTicketsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getBookedTicketsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="98044594-acc5-479d-8b21-e02f90fb8756" isOneWay="false" action="" name="getBookedTicketsByUser" bindingOperationName="getBookedTicketsByUser" type="One-Way" inputName="getBookedTicketsByUserRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dd166546-737f-4de7-8aa4-c670dffc6c0e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:getBookedTicketsByUserRequest>\r
+         <userId>1</userId>\r
+      </even:getBookedTicketsByUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getBookedTicketsByUserRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3780dc3b-afe9-4024-9bb7-14540df20fb6" isOneWay="false" action="" name="getEvent" bindingOperationName="getEvent" type="One-Way" inputName="getEventRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="749ad633-82c6-486a-98b2-3f306fa8beba" name="byName1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:getEventRequest>\r
+         <name>Concert of classical music</name>\r
+      </even:getEventRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getEventRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9d959b93-fd7b-429f-a1e0-f57da76e39bf" name="byName2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:getEventRequest>\r
+         <name>Rock concert</name>\r
+      </even:getEventRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getEventRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="dbb41b77-16cf-43fe-9326-5f6562faa3fa" isOneWay="false" action="" name="getNextEvent" bindingOperationName="getNextEvent" type="One-Way" inputName="getNextEventRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5d71d6cf-868d-4b8d-8010-27b93569021a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:getNextEventRequest>\r
+         <date>2016-04-21T18:00</date>\r
+      </even:getNextEventRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getNextEventRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ccfe8174-d3f6-43e5-80fe-bc63d5608b9e" isOneWay="false" action="" name="getUserByEmail" bindingOperationName="getUserByEmail" type="One-Way" inputName="getUserByEmailRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ad1fa38e-31bf-4f64-a299-312a5b882861" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://www.epam.com/user">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:getUserByEmailRequest>\r
+         <email>oleg.motorin@gmail.com</email>\r
+      </user:getUserByEmailRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getUserByEmailRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="275568c0-7d0f-4823-807c-ad5a451467c6" isOneWay="false" action="" name="getUserByName" bindingOperationName="getUserByName" type="One-Way" inputName="getUserByNameRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a3a92e97-c7b2-4eb1-ad49-139b52300ce7" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://www.epam.com/user">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:getUserByNameRequest>\r
+         <name>admin</name>\r
+      </user:getUserByNameRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getUserByNameRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d23101c4-052c-413a-96ff-a78f4fb3b520" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://www.epam.com/user">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:getUserByNameRequest>\r
+         <name>oleg</name>\r
+      </user:getUserByNameRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/getUserByNameRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="72eac3ce-74ed-4b20-a8fd-2790688d865e" isOneWay="false" action="" name="removeEvent" bindingOperationName="removeEvent" type="One-Way" inputName="removeEventRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f9bb72d0-0afe-4222-af4a-e58c171061b3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:removeEventRequest>\r
+         <idEvent>1</idEvent>\r
+      </even:removeEventRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/removeEventRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ed6db1ef-fe55-4b11-b9a3-bd9ad57d816d" isOneWay="false" action="" name="removeUser" bindingOperationName="removeUser" type="One-Way" inputName="removeUserRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="36536143-24dd-4732-ad94-963ce852c82d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://www.epam.com/user">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:removeUserRequest>\r
+         <idUser>1</idUser>\r
+      </user:removeUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://epam.com/spadvance-web-service/SpAdvPort/removeUserRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c29c8359-dd6e-4dea-b238-3160cb921ce1" isOneWay="false" action="" name="tickets" bindingOperationName="tickets" type="Notification" outputName="ticketsResponse" inputName="" receivesAttachments="false" anonymous="optional"><con:settings/><con:call id="ab04f6a3-e9c4-4ce4-9a0f-a85a5da3f547" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://www.epam.com/event">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <even:ticketsResponse>\r
+         <!--Zero or more repetitions:-->\r
+         <tickets>\r
+            <!--Optional:-->\r
+            <event>\r
+               <!--Optional:-->\r
+               <auditorium>\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <name>?</name>\r
+                  <!--Zero or more repetitions:-->\r
+                  <seats>\r
+                     <number>?</number>\r
+                     <vip>?</vip>\r
+                  </seats>\r
+               </auditorium>\r
+               <!--Optional:-->\r
+               <dateTime>?</dateTime>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+               <!--Optional:-->\r
+               <rating>?</rating>\r
+               <ticketPrice>?</ticketPrice>\r
+            </event>\r
+            <price>?</price>\r
+            <!--Optional:-->\r
+            <seat>\r
+               <number>?</number>\r
+               <vip>?</vip>\r
+            </seat>\r
+         </tickets>\r
+      </even:ticketsResponse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call></con:operation><con:operation id="39d1b77f-ae1a-44a9-b500-8020e6e7e624" isOneWay="false" action="" name="user" bindingOperationName="user" type="Notification" outputName="userResponse" inputName="" receivesAttachments="false" anonymous="optional"><con:settings/><con:call id="7e8d6836-3f7a-419f-a671-b14c87373782" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://www.epam.com/user">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:userResponse>\r
+         <!--Optional:-->\r
+         <user>\r
+            <!--Optional:-->\r
+            <birthday>?</birthday>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <name>?</name>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Zero or more repetitions:-->\r
+            <roles>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <name>?</name>\r
+            </roles>\r
+         </user>\r
+      </user:userResponse>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

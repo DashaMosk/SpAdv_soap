@@ -83,7 +83,7 @@ INSERT INTO roles(user_id, role_id) VALUES (0,0);
 INSERT INTO roles(user_id, role_id) VALUES (0,1);
 INSERT INTO roles(user_id, role_id) VALUES (1,0);
 
-INSERT INTO event(id, name, date, ticketPrice, auditorium_id) VALUES (1, 'Concert of classical music', '2016-04-11 18:00:00', 1.0, 1);
+INSERT INTO event(id, name, date, ticketPrice, auditorium_id) VALUES (1, 'Concert of classical music', '2016-04-20 18:00:00', 1.0, 1);
 INSERT INTO ticket(id, price, seat, event_id) VALUES (1, 1.0, 11, 1);
 INSERT INTO ticket(id, price, seat, event_id) VALUES (2, 2.0, 12, 1);
 INSERT INTO tickets(id, user_id, ticket_id) VALUES (1, 1, 1);
