@@ -2,7 +2,7 @@ package com.epam.springadvanced.entity;
 
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(namespace = "http://www.epam.com/spadvance")
+@XmlType(namespace = "http://www.epam.com/user")
 public class Role {
     private int id;
     private String name;

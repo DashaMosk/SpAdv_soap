@@ -9,14 +9,10 @@ import java.util.Collection;
 
 public interface EventService {
     Event create(String name, float price, Rating rating);
-
     Event create(String name, LocalDateTime dateTime, float price, Rating rating);
-
     void remove(Event event);
     Event getByName(String name);
-
     Event getById(long id);
-
     Collection<Event> getAll();
     Collection<Event> getForDateRange(LocalDateTime from, LocalDateTime to);
     Collection<Event> getNextEvents(LocalDateTime to);

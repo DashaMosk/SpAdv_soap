@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDateTime;
 
-@XmlRootElement(namespace = "http://www.epam.com/spadvance")
-@XmlType(namespace = "http://www.epam.com/spadvance")
+@XmlRootElement(namespace = "http://www.epam.com/event")
+@XmlType(namespace = "http://www.epam.com/event")
 public class CreateEventRequest {
     private String name;
     private float price;

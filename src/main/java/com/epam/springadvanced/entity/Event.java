@@ -5,7 +5,7 @@ import com.epam.springadvanced.service.Rating;
 import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDateTime;
 
-@XmlType(namespace = "http://www.epam.com/spadvance")
+@XmlType(namespace = "http://www.epam.com/event")
 public class Event {
     private Long id;
     private String name;

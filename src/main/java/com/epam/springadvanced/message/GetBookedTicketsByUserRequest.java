@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(namespace = "http://www.epam.com/event")
 @XmlType(namespace = "http://www.epam.com/event")
-public class GetEventRequest {
-    private String name;
+public class GetBookedTicketsByUserRequest {
+    private long userId;
 
     @XmlElement(required=true)
-    public String getName() {
-        return name;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

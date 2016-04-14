@@ -3,18 +3,19 @@ package com.epam.springadvanced.message;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.time.LocalDateTime;
 
 @XmlRootElement(namespace = "http://www.epam.com/event")
 @XmlType(namespace = "http://www.epam.com/event")
-public class GetEventRequest {
-    private String name;
+public class GetNextEventRequest {
+    private LocalDateTime date;
 
     @XmlElement(required=true)
-    public String getName() {
-        return name;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }

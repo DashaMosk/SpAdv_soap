@@ -4,9 +4,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(namespace = "http://www.epam.com/event")
-@XmlType(namespace = "http://www.epam.com/event")
-public class GetEventRequest {
+@XmlRootElement(namespace = "http://www.epam.com/user")
+@XmlType(namespace = "http://www.epam.com/user")
+public class GetUserByNameRequest {
     private String name;
 
     @XmlElement(required=true)

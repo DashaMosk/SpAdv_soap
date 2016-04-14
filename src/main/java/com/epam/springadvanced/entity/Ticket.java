@@ -1,5 +1,8 @@
 package com.epam.springadvanced.entity;
 
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(namespace = "http://www.epam.com/event")
 public class Ticket {
     private Long id;
     private float price;

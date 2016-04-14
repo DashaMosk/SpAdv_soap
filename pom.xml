@@ -100,9 +100,11 @@
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
+            <groupId>org.apache.ws.xmlschema</groupId>
+            <artifactId>xmlschema-core</artifactId>
+            <version>2.2.1</version>
         </dependency>
 
     </dependencies>
@@ -133,9 +135,14 @@
                 <configuration>
                     <transformSchemas>
                         <transformSchema>
-                            <uri>http://www.epam.com/spadvance</uri>
+                            <uri>http://www.epam.com/event</uri>
                             <toPrefix>epam</toPrefix>
-                            <toFile>spadvance.xsd</toFile>
+                            <toFile>event.xsd</toFile>
+                        </transformSchema>
+                        <transformSchema>
+                            <uri>http://www.epam.com/user</uri>
+                            <toPrefix>epam</toPrefix>
+                            <toFile>user.xsd</toFile>
                         </transformSchema>
                     </transformSchemas>
                    <sources>

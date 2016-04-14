@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlEnum
-@XmlType(namespace = "http://www.epam.com/spadvance")
+@XmlType(namespace = "http://www.epam.com/event")
 public enum Rating {
     HIGH(0), MID(1), LOW(2);
 

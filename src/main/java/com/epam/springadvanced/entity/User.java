@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDate;
 import java.util.List;
 
-@XmlType(name = "User", namespace = "http://www.epam.com/spadvance")
+@XmlType(namespace = "http://www.epam.com/user")
 public class User {
     private Long id;
     private String name;

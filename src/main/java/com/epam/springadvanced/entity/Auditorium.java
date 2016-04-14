@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.rangeClosed;
 
-@XmlType(namespace = "http://www.epam.com/spadvance")
+@XmlType(namespace = "http://www.epam.com/event")
 public class Auditorium {
     private int id;
     private String name;
